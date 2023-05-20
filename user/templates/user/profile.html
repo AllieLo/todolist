@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+使用者頁面
+{% endblock %}
+{% block content %}
+
+<h1>Profile</h1>
+<hr>
+{% if user.is_authenticated %}
+<h2>{{user.username}}</h2>
+{% if user.is_superuser == 1 %}
+<li style="color:blue">(管理員)</li>
+{% endif %}
+
+<li>建立時間:{{user.date_joined}}</li>
+<li>登入時間:{{user.last_login}}</li>
+{% else %}
+<h2>請先
+    <a href="{% url 'login' %}">登入</a>
+    {% endif %}
+    {% endblock %}
