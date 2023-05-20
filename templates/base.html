@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        .nav {
+            background-color: gold;
+            color: brown;
+            padding: 10px 10px;
+            border-radius: 24px;
+        }
+
+        .botton {
+            background-color: rgb(220, 220, 220);
+            padding: 0px 6px;
+            color: rgb(70, 70, 70);
+            position: absolute;
+            right: 5%;
+
+        }
+
+        a {
+            text-decoration: none;
+            margin-left: 6px;
+        }
+
+        .title {
+            background-color: rgb(132, 151, 176);
+            padding: 3px 18px;
+            border-radius: 18px;
+            margin: 6px;
+            /* font-family: Volte Bold Italic; */
+            letter-spacing: 2px;
+            color: aliceblue;
+            font-weight: bold;
+        }
+
+        body {
+            background-color: rgb(255, 245, 205);
+            font-family: consolas, 微軟正黑體;
+            font-size: 18px;
+            color: rgb(70, 70, 70);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <span class="title">ToDoList</span>
+        Welcome back, {% if user.is_authenticated %}
+        {{request.user}}
+        <a class="botton" ,href="{% url 'logout' %}">LOGOUT</a>
+        {% else %}
+        <a href="{% url 'logout' %}">登入</a>
+        <a href="{% url 'logout' %}">註冊</a>
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+    <p style="color:red">
+        {{message}}
+    </p>
+</body>
+
+</html>
