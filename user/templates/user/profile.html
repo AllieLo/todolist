@@ -9,7 +9,7 @@
 {% if user.is_authenticated %}
 <h2>{{user.username}}</h2>
 {% if user.is_superuser == 1 %}
-<li style="color:blue">(管理員)</li>
+<li style="color:rgb(0, 0, 200)">(管理員)</li>
 {% endif %}
 
 <li>建立時間:{{user.date_joined}}</li>

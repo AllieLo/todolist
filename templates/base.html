@@ -16,12 +16,12 @@
             border-radius: 24px;
         }
 
-        .botton {
+        .button {
             background-color: rgb(220, 220, 220);
             padding: 0px 6px;
             color: rgb(70, 70, 70);
-            position: absolute;
-            right: 5%;
+            /* position: absolute;
+            right: 20%; */
 
         }
 
@@ -53,12 +53,12 @@
 <body>
     <div class="nav">
         <span class="title">ToDoList</span>
-        Welcome back, {% if user.is_authenticated %}
-        {{request.user}}
-        <a class="botton" ,href="{% url 'logout' %}">LOGOUT</a>
+        {% if user.is_authenticated %}
+        Welcome back, {{request.user}}
+        <a class="button" href="{% url 'logout' %}">登出</a>
         {% else %}
-        <a href="{% url 'logout' %}">登入</a>
-        <a href="{% url 'logout' %}">註冊</a>
+        <a class="button" href="{% url 'login' %}">登入</a>
+        <a class="button" href="{% url 'register' %}">註冊</a>
         {% endif %}
     </div>
     {% block content %}
