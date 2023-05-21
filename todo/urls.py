@@ -21,4 +21,5 @@ from . import views
 urlpatterns = [
     path("", views.todolist, name="todolist"),
     path("todo/<int:id>", views.todo, name="todo"),
+    path("create/", views.create_todo, name="create-todo"),
 ]

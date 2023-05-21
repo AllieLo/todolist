@@ -1,8 +1,19 @@
 from django.shortcuts import render
 from .models import Todo
+from .forms import TodoForm
 
 
 # Create your views here.
+def create_todo(request):
+    message = ""
+    form = TodoForm()
+    if request.method == "POST":
+        form = TodoForm(request.POST)
+        todo = form.save(commit=False)
+        todo.user = request.user
+        todo.save()
+        message = "建立Todo成功"
+    return render(request, "todo/create_todo.html", {"form": form, "message": message})
 
 
 def todo(request, id):
@@ -15,7 +26,7 @@ def todo(request, id):
 
 
 def todolist(request):
-    todo = None
+    todos = None
     user = request.user
     if user.is_authenticated:
         todos = Todo.objects.filter(user=user)

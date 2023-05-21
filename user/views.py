@@ -11,7 +11,12 @@ def user_logout(request):
 
 
 def user_profile(request, id):
-    user = User.objects.get(pk=id)
+    user = None
+    try:
+        user = User.objects.get(pk=id)
+    except Exception as e:
+        print(e)
+
     return render(request, "user/profile.html", {"user": user})
 
 
