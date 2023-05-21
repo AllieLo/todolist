@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+待辦事項
+{% endblock %}
+{% block content %}
+<h1>ToDoList</h1>
+{% for todo in todos %}
+<li><span style="color:cadetblue">[{{todo.created}}]</span>
+    <a href="{% url 'todo' todo.id %}">{{todo.title}}</a>
+    {% if todo.important %}
+    <span style="color:red">important</span>
+    {% endif %}
+</li>
+{% endfor %}
+{% endblock %}

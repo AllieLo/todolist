@@ -10,8 +10,9 @@ def user_logout(request):
     return redirect("login")
 
 
-def user_profile(request):
-    return render(request, "user/profile.html")
+def user_profile(request, id):
+    user = User.objects.get(pk=id)
+    return render(request, "user/profile.html", {"user": user})
 
 
 def user_login(request):
@@ -40,7 +41,7 @@ def user_login(request):
                 else:
                     login(request, user)
                     message = "登入成功"
-                    return redirect("profile")
+                    return redirect("todolist")
 
     return render(request, "user/login.html", {"message": message})
 
@@ -71,11 +72,11 @@ def user_register(request):
                 else:
                     user = User.objects.create_user(
                         username=username, password=password1
-                    ).save()
+                    )
                     user.save()
-                    login(request.user)
+                    login(request, user)
                     message = "註冊成功"
-                    return redirect("profile")
+                    return redirect("todolist")
         except Exception as e:
             print(e)
             message = "註冊失敗"

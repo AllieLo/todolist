@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}
-待辦事項
+事項頁面
 {% endblock %}
 {% block content %}
-<h1>ToDoList</h1>
-{% for todo in todos %}
-<li><span style="color:cadetblue">{{todo.created}}</span> {{todo.title}}
+{% if todo %}
+<h2>{{todo.title}}
     {% if todo.important %}
-    <span style="color:red">important</span>
+    <span style="color:red">(重要)</span>
     {% endif %}
-</li>
-{% endfor %}
+</h2>
+<hr>
+<li>{{todo.text}}</li>
+<li>{{todo.created}}</li>
+{% else %}
+無此代辦事項
+{% endif %}
 {% endblock %}
