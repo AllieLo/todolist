@@ -10,8 +10,18 @@
     {% endif %}
 </h2>
 <hr>
-<li>{{todo.text}}</li>
-<li>{{todo.created}}</li>
+<li style="white-space: pre-line;list-style-type:none;">{{todo.text}}</li>
+<li>建立時間：{{todo.created}}</li>
+{% if todo.date_completed %}
+<li>完成時間：{{todo.date_completed}}
+    {% endif %}
+</li>
+<hr>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="更新">
+</form>
 {% else %}
 無此代辦事項
 {% endif %}
