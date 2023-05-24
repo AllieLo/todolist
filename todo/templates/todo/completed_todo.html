@@ -1,22 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}
-待辦事項
+已完成事項
 {% endblock %}
 {% block content %}
-<h1>ToDoList</h1>
+<h1>Completed</h1>
 {% for todo in todos %}
-{% if not todo.completed %}
+{% if todo.completed %}
 <li><span style="color:cadetblue">[{{todo.created}}]</span>
-    <a href="{% url 'todo' todo.id %}" style="color:black;text-decoration:underline;">
+    <a href="{% url 'todo' todo.id %}" style="color:gray">
         {% if todo.completed %}
         <s>{{todo.title}}</s>
         {% else %}
         {{todo.title}}
         {% endif %}
     </a>
-    {% if todo.important %}
-    <span style="color:red">important</span>
-    {% endif %}
 </li>
 {% endif %}
 {% endfor %}

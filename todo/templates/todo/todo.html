@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 {% if todo %}
-<h2>{{todo.title}}
+<h2 style="background-color:rgb(200, 200, 200);margin-left: 10px;padding: 3px 3px;border-radius: 6px">{{todo.title}}
     {% if todo.important %}
     <span style="color:red">(重要)</span>
     {% endif %}
@@ -20,7 +20,8 @@
 <form action="" method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="更新">
+    <input type="submit" value="更新" name="update">
+    <input type="submit" value="刪除" name="delete" onclick="return confirm('是否確定刪除?')">
 </form>
 {% else %}
 無此代辦事項
