@@ -60,7 +60,7 @@
         Welcome, <a href="{% url 'profile' user.id %}">{{request.user}}</a>
         <a class="button" href="{% url 'logout' %}">登出</a>
         <a class="button" href="{% url 'create-todo' %}">建立事項</a>
-        <a class="button" href="{% url 'completed-todo' %}">已完成</a>
+        <a class="button" href="{% url 'completed-todolist' %}">已完成</a>
 
         {% else %}
         <a class="button" href="{% url 'login' %}">登入</a>

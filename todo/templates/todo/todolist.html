@@ -18,6 +18,12 @@
     <span style="color:red">important</span>
     {% endif %}
 </li>
+<form action="{% url 'delete-todo' todo.id %}" style="display: inline;">
+    <button type="submit" onclick="return confirm('是否刪除?')">刪除</button>
+</form>
+<form action="{% url 'completed-todo' todo.id %}" style="display: inline;">
+    <button type="submit">完成</button>
+</form>
 {% endif %}
 {% endfor %}
 {% endblock %}
